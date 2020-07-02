@@ -5,12 +5,18 @@ import LocationForm from './LocationForm'
 import axios from 'axios'
 
 export default class Routes extends Component {
+  constructor() {
+    super()
+    this.state = {
+      location: '',
+    }
+  }
   async componentDidMount() {
     try {
       const { data } = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=e8551b988fd858314363ae664d8bdb9c`
       )
-      console.log('DATA:', data)
+      console.log(data)
     } catch (error) {
       console.log(`Get Weather Error: ${error}`)
     }
