@@ -28,27 +28,17 @@ class DisconnectedLocationForm extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="location">Location:</label>
-          <input
-            type="text"
-            name="location"
-            required
-            value={this.state.location}
-            onChange={this.handleChange}
-          />
-          <button type="submit">Submit</button>
-        </form>
-        <Link to="/weatherpage">Link to weather page</Link>
-        <button
-          onClick={() => {
-            history.push('/test')
-          }}
-        >
-          Click me
-        </button>
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        <label htmlFor="location">Location:</label>
+        <input
+          type="text"
+          name="location"
+          required
+          value={this.state.location}
+          onChange={this.handleChange}
+        />
+        <button type="submit">Submit</button>
+      </form>
     )
   }
 }

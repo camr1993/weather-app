@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 // import './App.css';
 import Routes from './Routes'
 import Navbar from './Navbar'
 
 const App = () => {
   return (
-    <div>
+    <Fragment>
       {/* <Navbar /> */}
       <Routes />
-    </div>
+    </Fragment>
   )
 }
 
