@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getWeatherThunk } from './store/weather'
+import history from './history'
+import { Link, withRouter } from 'react-router-dom'
 
-export default class LocationForm extends Component {
+class DisconnectedLocationForm extends Component {
   constructor() {
     super()
     this.state = {
@@ -18,23 +22,52 @@ export default class LocationForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
     // do something here
-    this.setState({
-      location: '',
-    })
+    this.props.getWeather(this.state.location)
+    history.push('/weatherpage')
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="location">Location:</label>
-        <input
-          type="text"
-          name="location"
-          required
-          value={this.state.location}
-          onChange={this.handleChange}
-        />
-      </form>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="location">Location:</label>
+          <input
+            type="text"
+            name="location"
+            required
+            value={this.state.location}
+            onChange={this.handleChange}
+          />
+          <button type="submit">Submit</button>
+        </form>
+        <Link to="/weatherpage">Link to weather page</Link>
+        <button
+          onClick={() => {
+            history.push('/test')
+          }}
+        >
+          Click me
+        </button>
+      </div>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    weather: state.weather,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getWeather: (city) => dispatch(getWeatherThunk(city)),
+  }
+}
+
+const LocationForm = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DisconnectedLocationForm)
+
+export default LocationForm

@@ -1,27 +1,32 @@
-import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import React, { Component, Fragment } from 'react'
+import { withRouter, Route, Switch } from 'react-router-dom'
 import WeatherPage from './WeatherPage'
 import LocationForm from './LocationForm'
+import Test from './Test'
+import { connect } from 'react-redux'
 // import axios from 'axios'
 
-const Routes = () => {
-  // async componentDidMount() {
-  //   try {
-  //     const { data } = await axios.get(
-  //       `https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=e8551b988fd858314363ae664d8bdb9c`
-  //     )
-  //     console.log(data)
-  //   } catch (error) {
-  //     console.log(`Get Weather Error: ${error}`)
-  //   }
-  // }
+// const Routes = () => {
+//   return (
+//     <Switch>
+//       <Route path="/weatherpage" component={WeatherPage} />
+//       <Route path="/test" component={Test} />
+//       <Route component={LocationForm} />
+//     </Switch>
+//   )
+// }
 
-  return (
-    <Switch>
-      <Route path="/weatherpage" component={WeatherPage} />
-      <Route component={LocationForm} />
-    </Switch>
-  )
+class Routes extends Component {
+  render() {
+    console.log('rerendered')
+    return (
+      <Switch>
+        <Route path="/weatherpage" component={WeatherPage} />
+        <Route path="/test" component={Test} />
+        <Route component={LocationForm} />
+      </Switch>
+    )
+  }
 }
 
 export default Routes
