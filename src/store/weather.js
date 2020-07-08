@@ -1,4 +1,5 @@
 import axios from 'axios'
+import history from '../history'
 
 // Action Types:
 const GET_WEATHER = 'GET_WEATHER'
@@ -18,6 +19,7 @@ export const getWeatherThunk = (city) => {
         // `https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=e8551b988fd858314363ae664d8bdb9c`
       )
       dispatch(getWeather(data))
+      history.push('/weatherpage')
     } catch (error) {
       console.log('Get Weather THUNK Error: ', error)
     }

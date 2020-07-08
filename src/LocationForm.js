@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getWeatherThunk } from './store/weather'
-import history from './history'
 
 class DisconnectedLocationForm extends Component {
   constructor() {
@@ -21,7 +20,6 @@ class DisconnectedLocationForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
     this.props.getWeather(this.state.location)
-    history.push('/weatherpage')
   }
 
   render() {

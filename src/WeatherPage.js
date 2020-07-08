@@ -1,19 +1,17 @@
 import React from 'react'
+import './WeatherPage.css'
 import { connect } from 'react-redux'
 
 const DisconnectedWeatherPage = (props) => {
-  console.log('PROPS', props.weatherInfo)
-  const weather = props.weatherInfo.weather
-  const city = props.weatherInfo.name
-  console.log('WEATHER', weather)
-  console.log('CITY', city)
+  const weatherInfo = props.weatherInfo
   return (
-    <div>
-      {weather && (
-        <div>
-          <div>{city}</div>
-          <div>{weather[0].main}</div>
-          <div>{weather[0].description}</div>
+    <div id="bg">
+      {weatherInfo && (
+        <div className="rain">
+          <div>{weatherInfo.name}</div>
+          <div>Main: {weatherInfo.weather[0].main}</div>
+          <div>Description: {weatherInfo.weather[0].description}</div>
+          {/* <div className="rain"></div> */}
         </div>
       )}
     </div>
